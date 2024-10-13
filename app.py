@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for,session
+from flask import Flask, render_template, flash, request, redirect, url_for,session
 from datetime import datetime, timedelta
 import time
 import random
@@ -114,6 +114,13 @@ def home():
     section = request.args.get('section', 'myDay')
     filtered_tasks = filter_tasks(section)
     # Check for upcoming deadlines and get procrastination messages
+    upcoming_tasks = check_deadlines()
+    procrastination_messages = None
+
+    # Check for upcoming tasks and randomly pop up a distraction
+    if upcoming_tasks:
+        if random.randint(1, 5) == 1:  # 20% chance of distraction
+            return redirect(url_for('procrastination'))
     user = session.get('user', 'guest')
 
     logging.info(f"Rendering home page for section: {section}, tasks count: {len(filtered_tasks)}")

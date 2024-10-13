@@ -66,31 +66,5 @@
             <button class="delete-all-btn" type="submit">Delete All Tasks</button>
         </form>
     </div>
-
-    <!-- Modal for Procrastination Messages
-    <div id="procrastination-modal" style="display:none;">
-        <div class="modal-content">
-            <h1>Procrastination Alert!</h1>
-            <p id="procrastination-message"></p>
-            <button onclick="closeProcrastinationModal()">Close</button>
-        </div>
-    </div> -->
-
-    <script>
-        // Function to randomly show the procrastination pop-up
-        function showProcrastinationPopup() {
-            // Randomly decide whether to open the procrastination window (50% chance)
-            if (Math.random() > 0.5) {
-                const procrastinationWindow = window.open(
-                    "{{ url_for('procrastination') }}", 
-                    "Procrastination", 
-                    "width=400,height=300"
-                );
-            }
-        }
-    
-        // Set an interval for the procrastination pop-up to appear randomly
-        setInterval(showProcrastinationPopup, Math.random() * (30000 - 10000) + 10000); // Every 10-30 seconds
-    </script>
 </body>
 </html>

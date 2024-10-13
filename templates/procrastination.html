@@ -1,52 +1,17 @@
-<!-- procrastination.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Procrastination Alert</title>
-    <style>
-        body, html {
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Arial', sans-serif;
-            background-color: #ffefba;
-            color: #333;
-        }
-
-        .message-container {
-            padding: 20px;
-            border: 2px solid #ff6f61;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        h1 {
-            color: #ff6f61;
-        }
-
-        p {
-            font-size: 18px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #ff6f61;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-    </style>
+    <title>Distraction</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='procrastination_styles.css') }}">
 </head>
 <body>
-    <div class="message-container">
+    <div class="message-box">
         <h1>Procrastination Alert!</h1>
         <p>{{ message }}</p>
-        <button onclick="window.close()">Close</button>
+        <a href="{{ url_for('home') }}">Back to Work</a>
     </div>
 </body>
 </html>
