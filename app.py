@@ -119,7 +119,7 @@ def home():
 
     # Check for upcoming tasks and randomly pop up a distraction
     if upcoming_tasks:
-        if random.randint(1, 5) == 1:  # 20% chance of distraction
+        if random.randint(1, 2) == 1:  # 20% chance of distraction
             return redirect(url_for('procrastination'))
     user = session.get('user', 'guest')
 
