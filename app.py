@@ -11,6 +11,10 @@ from dotenv import load_dotenv  # Import dotenv
 
 # Load environment variables
 load_dotenv()
+HF_CLIENT_ID=os.getenv("HF_CLIENT_ID")
+HF_CLIENT_SECRET=os.getenv("HF_CLIENT_SECRET")
+SECRET_KEY=os.getenv("SECRET_KEY")
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -18,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 # App config
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY")  # Load secret key from .env
+app.secret_key = SECRET_KEY  # Load secret key from .env
 app.config['SESSION_COOKIE_NAME'] = 'huggingface-login-session'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=9999)
 
@@ -26,8 +30,8 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=9999)
 oauth = OAuth(app)
 oauth.register(
     name='huggingface',
-    client_id=os.getenv("HF_CLIENT_ID"),  # Load from .env
-    client_secret=os.getenv("HF_CLIENT_SECRET"),  # Load from .env
+    client_id=HF_CLIENT_ID,  # Load from .env
+    client_secret=HF_CLIENT_SECRET,  # Load from .env
     access_token_url='https://huggingface.co/oauth/token',
     access_token_params=None,
     authorize_url=f'https://huggingface.co/oauth/authorize',

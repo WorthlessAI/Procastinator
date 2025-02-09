@@ -1,4 +1,4 @@
-flask
-langchain
-langchain_community
+Flask
+Authlib
+python-dotenv
 huggingface_hub
